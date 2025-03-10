@@ -1,7 +1,7 @@
-
+// Base URL for API
 const API_BASE_URL = '/api/v1';
 
-
+// Check if user is logged in
 document.addEventListener('DOMContentLoaded', () => {
     const currentUser = localStorage.getItem('currentUser');
     if (!currentUser) {
@@ -9,20 +9,20 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
     
-   
+    // Display username
     const user = JSON.parse(currentUser);
     const usernameElement = document.getElementById('username');
     if (usernameElement) {
         usernameElement.textContent = `Welcome, ${user.name}`;
     }
     
-    
+    // Add logout functionality
     const logoutBtn = document.getElementById('logoutBtn');
     if (logoutBtn) {
         logoutBtn.addEventListener('click', logout);
     }
     
-    
+    // Handle form submission
     const faqForm = document.getElementById('faqForm');
     if (faqForm) {
         faqForm.addEventListener('submit', submitQuestion);
@@ -60,11 +60,11 @@ async function submitQuestion(event) {
         
         if (response.ok) {
             alert('Question added successfully!');
-            
+            // Clear form
             questionInput.value = '';
             answerInput.value = '';
             categoryInput.value = '';
-            
+            // Redirect to home page
             window.location.href = 'home.html';
         } else {
             alert(data.message || 'Failed to add question');
