@@ -1,0 +1,54 @@
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.auth-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 450px;
+}
+
+.auth-card h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #4a6fdc;
+}
+
+.auth-switch {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.auth-switch a {
+    color: #4a6fdc;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-switch a:hover {
+    text-decoration: underline;
+}
+
+#loginForm .form-actions,
+#signupForm .form-actions {
+    justify-content: center;
+}
+
+#loginForm .btn,
+#signupForm .btn {
+    width: 100%;
+}
+
+.auth-error {
+    color: #e74c3c;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}

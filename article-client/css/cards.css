@@ -1,0 +1,41 @@
+/* Basic container style */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Card styling */
+.card {
+    width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 15px;
+    background-color: #fff;
+}
+
+/* Card title styling */
+.card-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* Card category styling */
+.card-category {
+    font-size: 1.2em;
+    color: #777;
+    margin: 5px 0;
+}
+
+/* Card answer styling */
+.card-answer {
+    font-size: 1em;
+    color: #333;
+    margin-top: 10px;
+    font-style: italic;
+}
