@@ -1,6 +1,7 @@
+// Base URL for API
 const API_BASE_URL = '/api/v1';
 
-
+// Check if user is logged in
 document.addEventListener('DOMContentLoaded', () => {
     const currentUser = localStorage.getItem('currentUser');
     if (!currentUser) {
@@ -8,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
     
+    // Display username
     const user = JSON.parse(currentUser);
     const usernameElement = document.getElementById('username');
     if (usernameElement) {
