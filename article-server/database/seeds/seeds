@@ -1,0 +1,104 @@
+<?php
+
+require(__DIR__ . '/../../Connection/connection.php');
+require("../../Models/User.php");
+require("../../Models/Question.php");
+require_once("../../Models/UserSkeleton.php");
+require_once("../../Models/QuestionSkeleton.php");
+
+class Seeder
+{
+    public static function seed_users($conn)
+    {
+        $users = [
+            [
+                'FN' => 'kassem',
+                'email' => 'kassem@gmail.com',
+                'password' => '66'
+            ],
+            [
+                'FN' => 'Charbel D',
+                'email' => 'charbeld@gmail.com',
+                'password' => 'test'
+            ],
+            [
+                'FN' => 'Nour Nour',
+                'email' => 'nour@gmail.com',
+                'password' => '66'
+            ],
+            [
+                'FN' => 'Taha Taha',
+                'email' => 'tahataha@gmail.com',
+                'password' => 'taha12'
+            ],
+            [
+                'FN' => 'Lamis Farhat',
+                'email' => 'lamisfarhat@gmail.com',
+                'password' => 'FSE'
+            ],
+            [
+                'FN' => 'Naila Kh',
+                'email' => 'Nailakd@gmail.com',
+                'password' => 'underpressure'
+            ],
+            [
+                'full_name' => 'Jomana Ammar',
+                'email' => 'jomanaa@gmail.com',
+                'password' => 'hey22'
+            ],
+        ];
+
+        foreach ($users as $user) {
+            $user_object = new UserSkeleton($user['FN'], $user['email'], $user['password']);
+            User::createUser($user_object, $conn);
+        }
+    }
+
+    public static function seed_questions($conn)
+    {
+        $questions = [
+            [
+                'question' => 'What is Reference Architecture?',
+                'answer' => 'It is a standardized template that provides a high-level blueprint for designing and implementing a system.'
+            ],
+            [
+                'question' => 'Why Use a Reference Architecture?',
+                'answer' => 'Ensures consistency and standardization across projects.'
+            ],
+            [
+                'question' => 'What Are the Key Components of a Reference Architecture?',
+                'answer' => 'Principles & Guidelines – High-level design rules.'
+            ],
+            [
+                'question' => 'How Does Reference Architecture Differ from Solution Architecture?',
+                'answer' => 'It is a general framework that can be applied to multiple projects.'
+            ],
+            [
+                'question' => 'How is a Reference Architecture Created?',
+                'answer' => 'It is based on emerging trends and technologies.'
+            ],
+            [
+                'question' => 'How Does Reference Architecture Improve Security?',
+                'answer' => 'It establishes data encryption and protection standards.'
+            ],
+            [
+                'question' => 'What Are Some Challenges in Implementing a Reference Architecture?',
+                'answer' => 'Rigid standardization – May not fit all business use cases.'
+            ],
+            [
+                'question' => 'How Do Reference Architectures Support Scalability?',
+                'answer' => 'Encourages modular design.'
+            ],
+        ];
+
+        foreach ($questions as $question) {
+            $question_object = new QuestionSkeleton($question['question'], $question['answer']);
+            Question::createQuestion($question_object, $conn);
+        }
+    }
+}
+
+Seeder::seed_users($conn);
+Seeder::seed_questions($conn);
+
+?>
