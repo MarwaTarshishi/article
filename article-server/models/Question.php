@@ -3,9 +3,10 @@
     class Question{
 
         public static function createQuestion($QuestionSkeleton, $conn) {
-            $query = $conn->prepare("INSERT INTO questions (question, answer) VALUES(?, ?);");
+            $query = $conn->prepare("INSERT INTO questions (question, answer, category ) VALUES(?, ?, ? );");
             $query->bind_param("ss", $QuestionSkeleton->get_question(),
                                       $QuestionSkeleton->get_answer());
+                                      $QuestionSkeleton->get_category());
             $query->execute();
             $query->close();
         }
@@ -14,6 +15,7 @@
             $query = $conn->prepare("SELECT question, answer  FROM questions WHERE question = ? AND answer = ?");
             $query->bind_param("ss", $QuestionSkeleton->get_question(),
                                       $QuestionSkeleton->get_answer());
+                                      $QuestionSkeleton->get_category());
             $query->execute();
             $result = $query->get_result();
             if($result->num_rows > 0)
@@ -27,6 +29,8 @@
             $query = $conn->prepare("DELETE FROM questions WHERE question = ? AND answer = ?");
             $query->bind_param("ss", $QuestionSkeleton->get_question(),
                                       $QuestionSkeleton->get_answer());
+                                      $QuestionSkeleton->get_category());
+            
             $query->execute();
             $query->close();
         }
