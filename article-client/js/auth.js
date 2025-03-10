@@ -1,10 +1,8 @@
-
-const API_BASE_URL = '/api/v1';
-
-
+const API_BASE_URL = 'http://localhost:8000/article-server/apis/v1';
+// Check if we're on the login page
 const isLoginPage = window.location.pathname.includes('login.html');
 
-
+// Check if user is already logged in
 document.addEventListener('DOMContentLoaded', () => {
     const currentUser = localStorage.getItem('currentUser');
     if (currentUser && (isLoginPage || window.location.pathname.includes('signup.html'))) {
@@ -12,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-//
+// Handle login form submission
 if (isLoginPage) {
     const loginForm = document.getElementById('loginForm');
     
@@ -47,7 +45,7 @@ if (isLoginPage) {
         }
     });
 } else {
-   
+    // Handle signup form submission
     const signupForm = document.getElementById('signupForm');
     
     signupForm.addEventListener('submit', async (event) => {
@@ -80,9 +78,9 @@ if (isLoginPage) {
             const data = await response.json();
             
             if (response.ok) {
-                
+                // Save user info to localStorage
                 localStorage.setItem('currentUser', JSON.stringify(data.user));
-                
+                // Redirect to home page
                 window.location.href = 'home.html';
             } else {
                 alert(data.message || 'Registration failed');
