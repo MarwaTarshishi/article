@@ -1,5 +1,4 @@
-// Base URL for API
-const API_BASE_URL = '/api/v1';
+const API_BASE_URL = 'http://localhost:8000/article-server/apis/v1';
 
 // Check if user is logged in
 document.addEventListener('DOMContentLoaded', () => {
