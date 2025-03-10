@@ -1,15 +1,15 @@
-
+// Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Form validation
     const forms = document.querySelectorAll('form');
     
     forms.forEach(form => {
         form.addEventListener('submit', function(event) {
-           
+            // Get all required inputs
             const requiredInputs = form.querySelectorAll('[required]');
             let isValid = true;
             
-            
+            // Check each required field
             requiredInputs.forEach(input => {
                 if (!input.value.trim()) {
                     isValid = false;
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 } else {
                     clearError(input);
                     
-                    
+                    // Email validation
                     if (input.type === 'email') {
                         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                         if (!emailRegex.test(input.value)) {
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         }
                     }
                     
-                    
+                    // Password validation for signup form
                     if (input.name === 'password' && form.id === 'signup-form') {
                         if (input.value.length < 8) {
                             isValid = false;
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         }
                     }
                     
-                    
+                    // Password confirmation validation
                     if (input.name === 'confirm-password') {
                         const password = form.querySelector('[name="password"]');
                         if (input.value !== password.value) {
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
             
-           
+            // If validation fails, prevent form submission
             if (!isValid) {
                 event.preventDefault();
             }
@@ -69,22 +69,22 @@ document.addEventListener('DOMContentLoaded', function() {
         input.classList.add('input-error');
     }
     
-    
+    // Function to clear error messages
     function clearError(input) {
         // Find any existing error message
         const parent = input.parentNode;
         const errorElement = parent.querySelector('.error-message');
         
-        
+        // Remove if found
         if (errorElement) {
             parent.removeChild(errorElement);
         }
         
-        
+        // Remove error class from input
         input.classList.remove('input-error');
     }
     
-    
+    // Toggle password visibility
     const passwordToggles = document.querySelectorAll('.password-toggle');
     
     passwordToggles.forEach(toggle => {
@@ -101,11 +101,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    
+    // Display questions on the index page
     const questionContainer = document.getElementById('question-container');
     
     if (questionContainer) {
-        
+        // This is a simple simulation since we're not using fetch
+        // In a real application, you would get this data from the server
         displayQuestions([
             {
                 id: 1,
@@ -120,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
         ]);
     }
     
-    
+    // Function to display questions
     function displayQuestions(questions) {
         questions.forEach(q => {
             const questionCard = document.createElement('div');
