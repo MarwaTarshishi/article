@@ -9,7 +9,8 @@
             $query = "CREATE TABLE IF NOT EXISTS questions (
                       id INT AUTO_INCREMENT PRIMARY KEY,
                       question TEXT NOT NULL,
-                      answer TEXT NOT NULL
+                      answer TEXT NOT NULL,
+                      category Varchar Not Null,
             );";
             
             if($conn->query($query))
